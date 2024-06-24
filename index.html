@@ -103,8 +103,8 @@
                 if (interval === 0) {
                     return total_days - speedup_days;
                 }
-                let intervals = Math.floor(total_days / interval);
-                let total_speedup = Math.min(speedup_days, intervals);
+                let total_intervals = Math.floor(total_days / interval);
+                let total_speedup = Math.min(speedup_days, total_intervals * interval);
                 return total_days - total_speedup;
             }
 
@@ -121,7 +121,9 @@
             let data = [{
                 x: tasks,
                 y: times,
-                type: 'bar'
+                type: 'scatter',
+                mode: 'lines+markers',
+                line: { shape: 'linear' }
             }];
 
             let layout = {
